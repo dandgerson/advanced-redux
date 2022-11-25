@@ -1,0 +1,17 @@
+@use "theme";
+
+.App {
+  height: 100vh;
+  background-color: theme.$mainDarkColor;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  color: theme.$mainLightColor;
+  overflow: hidden;
+}
+
+.routes-container {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
