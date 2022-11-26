@@ -5,7 +5,7 @@ type UserState = {
   entities: User[];
 };
 
-const createUser = (draftUser: DraftUser): User => ({
+export const createUser = (draftUser: DraftUser): User => ({
   tasks: [],
   id: nanoid(),
   // spread the last cuz if the draft has the upper props - it rewrite the exist's
