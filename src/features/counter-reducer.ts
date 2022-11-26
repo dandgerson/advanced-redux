@@ -4,13 +4,6 @@ type CounterState = {
   count: number;
 };
 
-type CounterAction =
-  | {
-      type: "INCREMENT" | "DECREMENT";
-      payload: number;
-    }
-  | { type: "RESET" };
-
 const increment = createAction("INCREMENT", (amount: number) => ({
   payload: amount,
 }));
@@ -19,9 +12,12 @@ const decrement = createAction("DECREMENT", (amount: number) => ({
 }));
 const reset = createAction("RESET");
 
-increment();
-
 const initialState: CounterState = { count: 0 };
+
+type CounterAction =
+  | ReturnType<typeof increment>
+  | ReturnType<typeof decrement>
+  | ReturnType<typeof reset>;
 
 export const reducer = (state = initialState, action: CounterAction) => {
   if (action.type === increment.type) {
