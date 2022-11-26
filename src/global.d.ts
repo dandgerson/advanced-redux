@@ -1,3 +1,7 @@
+// Pick<Task, 'title'>
+// Partial<Task>
+type RequireOnly<T, P extends keyof T> = Pick<T, P> & Partial<Omit<T, P>>;
+
 type Task = {
   id: string;
   title: string;
