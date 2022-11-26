@@ -11,14 +11,25 @@
     overflow: hidden;
   }
 
-  .sidebar,
   .main {
     padding: 1rem;
     border: 1px solid theme.$mainLightColor10;
   }
 
   .sidebar {
-    width: 30%;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    .tasks-section,
+    .users-section {
+      display: flex;
+      flex-direction: column;
+      padding: 1rem;
+      border: 1px solid theme.$mainLightColor10;
+      gap: 1rem;
+    }
 
     form {
       display: flex;
@@ -28,7 +39,7 @@
       input {
         border: 1px solid theme.$mainLightColor10;
         background-color: theme.$mainLightColor10;
-        padding: 0.5rem;
+        padding: 0.25rem;
         color: theme.$mainLightColor;
       }
 
@@ -62,9 +73,9 @@
     display: flex;
     gap: 1rem;
     border: 1px solid theme.$mainLightColor10;
-    padding: 0.5rem;
+    padding: 1rem;
 
-    &_content {
+    &_details {
       display: flex;
       flex-direction: column;
       flex: 1;
@@ -78,22 +89,57 @@
     &_options {
       display: flex;
       flex-direction: column;
-      gap: 0.5rem;
+      gap: 1rem;
       align-items: flex-end;
     }
 
-    &_remove {
-      background-color: theme.$accentDanger;
-      color: theme.$mainLightColor;
-    }
-
     &_status {
-      border-radius: 1rem;
+      border-radius: 0.5rem;
       border: 1px solid theme.$mainLightColor;
       font-size: 0.75rem;
       color: theme.$mainLightColor;
       background-color: theme.$mainDarkColor;
       padding: 0.25rem;
     }
+  }
+}
+
+.button {
+  border: 0;
+  border-radius: 0.25rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.25rem 0.5rem;
+  color: theme.$mainDarkColor;
+  cursor: pointer;
+
+  &-danger {
+    color: theme.$mainLightColor;
+    background-color: theme.$accentDanger;
+  }
+}
+
+.user {
+  border: 1px solid theme.$mainLightColor10;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  &_details {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: space-between;
+  }
+
+  &_alterEgo {
+    font-weight: bold;
+  }
+
+  &_options {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
   }
 }

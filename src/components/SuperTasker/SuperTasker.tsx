@@ -1,7 +1,9 @@
 import { CreateNewTask } from "./CreateNewTask";
+import { CreateNewUser } from "./CreateNewUser";
 
 import "./Supertasker.scss";
 import { TasksList } from "./TasksLlist";
+import { UsersList } from "./UsersList";
 
 const SuperTasker = () => {
   return (
@@ -10,7 +12,13 @@ const SuperTasker = () => {
 
       <div className="content">
         <div className="sidebar">
-          <CreateNewTask />
+          <div className="tasks-section">
+            <CreateNewTask />
+          </div>
+          <div className="users-section">
+            <CreateNewUser />
+            <UsersList />
+          </div>
         </div>
         <div className="main">
           <TasksList />
