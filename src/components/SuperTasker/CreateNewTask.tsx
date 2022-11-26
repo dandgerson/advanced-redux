@@ -1,8 +1,8 @@
-import { useDispatch } from "react-redux";
 import { addTask } from "../../features/tasks-slice";
+import { useAppDispatch } from "../../hooks";
 
 export const CreateNewTask = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   return (
     <form
       onSubmit={(e) => {

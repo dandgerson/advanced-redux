@@ -1,6 +1,5 @@
-import { useDispatch } from "react-redux";
 import { removeTask } from "../../features/tasks-slice";
-import { useAppSelector } from "../../hooks";
+import { useAppDispatch, useAppSelector } from "../../hooks";
 
 /**
  * This component exist cuz we incapsulate useSelector and dispatch logic
@@ -8,7 +7,7 @@ import { useAppSelector } from "../../hooks";
  */
 
 export const TasksList = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const tasks = useAppSelector((state) => state.tasks);
 
