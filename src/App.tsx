@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, NavLink, Route, Routes, useRoutes } from "react-router-dom";
 import "./App.scss";
+import { Counter } from "./components/Counter/Counter";
 import SuperTasker from "./components/SuperTasker/SuperTasker";
 
 const routes = [
@@ -15,7 +16,7 @@ const routes = [
   },
   {
     path: "counter",
-    element: <div>Counter</div>,
+    element: <Counter />,
     title: "Accident Counter RTK",
   },
   {
@@ -40,7 +41,7 @@ function App() {
           .map(
             (route) =>
               route.path && (
-                <NavLink key={route.path} to={route.path}>
+                <NavLink key={route.path} to={route.path} className="link">
                   {route.title}
                 </NavLink>
               )

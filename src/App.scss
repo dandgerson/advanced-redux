@@ -15,3 +15,14 @@
   flex-direction: column;
   overflow: hidden;
 }
+
+.link {
+  text-decoration: none;
+  color: theme.$mainLightColor;
+}
+
+.active {
+  text-decoration: underline;
+  color: theme.$mainLightColor;
+  font-weight: bold;
+}
