@@ -18,6 +18,7 @@ const data = {
 describe("taskSlice", () => {
   const initialState = {
     entities: data.tasks.map((draftTask) => createTask(draftTask)),
+    loading: false,
   };
 
   it(`should add task when the ${addTask}`, () => {

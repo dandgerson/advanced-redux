@@ -1,3 +1,6 @@
+import { useEffect } from "react";
+import { fetchTasks } from "../../features/tasks-slice";
+import { useAppDispatch } from "../../hooks";
 import { CreateNewTask } from "./CreateNewTask";
 import { CreateNewUser } from "./CreateNewUser";
 
@@ -6,6 +9,11 @@ import { TasksList } from "./TasksLlist";
 import { UsersList } from "./UsersList";
 
 const SuperTasker = () => {
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    dispatch(fetchTasks());
+  }, [dispatch]);
+
   return (
     <div className="superTasker">
       <h3>SuperTasker</h3>
