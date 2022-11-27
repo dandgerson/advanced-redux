@@ -1,6 +1,7 @@
 import { NavLink, useRoutes } from "react-router-dom";
 import "./App.scss";
 import { Counter } from "./pages/Counter/Counter";
+import { JetSetter } from "./pages/JetSetter/JetSetter";
 import SuperTasker from "./pages/SuperTasker/SuperTasker";
 
 const routes = [
@@ -20,7 +21,7 @@ const routes = [
   },
   {
     path: "jetsetter",
-    element: <div>Jet setter rtk</div>,
+    element: <JetSetter />,
     title: "Jet setter",
   },
 ];
