@@ -1,11 +1,23 @@
 import { addTask, createTask, removeTask, tasksReducer } from "./tasks-slice";
+import { createUser, removeUser } from "./users-slice";
+
+const data = {
+  users: [
+    {
+      realName: "Dmitry G. Anderson",
+      alterEgo: "Dandgerson",
+      id: "omgwtfbbq",
+    },
+  ],
+  tasks: [
+    { title: "Fuck off all Twats around", user: "omgwtfbbq" },
+    { title: "Go for the market", user: "omgwtfbbq" },
+  ],
+};
 
 describe("taskSlice", () => {
   const initialState = {
-    entities: [
-      createTask({ title: "Make it OMG" }),
-      createTask({ title: "Make it WTF" }),
-    ],
+    entities: data.tasks.map((draftTask) => createTask(draftTask)),
   };
 
   it(`should add task when the ${addTask}`, () => {
@@ -23,6 +35,21 @@ describe("taskSlice", () => {
 
     expect(newState.entities).toEqual(
       initialState.entities.filter((task) => task.id !== taskForRemove.id)
+    );
+  });
+
+  it(`should remove all user id from tasks.user when the ${removeUser}`, () => {
+    const userId = createUser(data.users[0]).id;
+    const action = removeUser({ id: userId });
+    const newState = tasksReducer(initialState, action);
+
+    expect(newState.entities).toEqual(
+      initialState.entities.map((task) => {
+        const needEntries = Object.entries(task).filter(
+          (entry) => entry[0] !== "user"
+        );
+        return Object.fromEntries(needEntries);
+      })
     );
   });
 });

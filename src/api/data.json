@@ -2,11 +2,12 @@
   "users": [
     {
       "realName": "Dmitry G. Anderson",
-      "alterEgo": "Dandgerson"
+      "alterEgo": "Dandgerson",
+      "id": "omgwtfbbq"
     }
   ],
   "tasks": [
-    { "title": "Fuck off all Twats around" },
-    { "title": "Go for the market" }
+    { "title": "Fuck off all Twats around", "user": "omgwtfbbq" },
+    { "title": "Go for the market", "user": "omgwtfbbq" }
   ]
 }
