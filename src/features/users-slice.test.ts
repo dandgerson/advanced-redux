@@ -6,6 +6,7 @@ describe("userSlice", () => {
       createUser({ realName: "Omg", alterEgo: "OMG" }),
       createUser({ realName: "Wtf", alterEgo: "WTF" }),
     ],
+    loading: false,
   };
 
   it(`should add user when the ${addUser}`, () => {

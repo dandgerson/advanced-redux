@@ -1,4 +1,5 @@
-import { useAppSelector } from "../../hooks";
+import { Loading } from "../../components/Loading";
+import { useTasks } from "../../features/tasks-slice";
 import { Task } from "./Task";
 
 /**
@@ -7,12 +8,12 @@ import { Task } from "./Task";
  */
 
 export const TasksList = () => {
-  const tasks = useAppSelector((state) => state.tasks);
-
+  const [tasks, loading] = useTasks();
   return (
     <>
-      {tasks.entities.map((taskEntity) => (
-        <Task key={taskEntity.id} taskEntity={taskEntity} />
+      <Loading loading={loading} />
+      {tasks.map((task) => (
+        <Task key={task.id} taskEntity={task} />
       ))}
     </>
   );

@@ -1,4 +1,5 @@
-import { useAppSelector } from "../../hooks";
+import { Loading } from "../../components/Loading";
+import { useUsers } from "../../features/users-slice";
 import { User } from "./User";
 
 /**
@@ -7,12 +8,12 @@ import { User } from "./User";
  */
 
 export const UsersList = () => {
-  const users = useAppSelector((state) => state.users);
-
+  const [users, loading] = useUsers();
   return (
     <>
-      {users.entities.map((userEntity) => (
-        <User key={userEntity.id} userEntity={userEntity} />
+      <Loading loading={loading} />
+      {users.map((user) => (
+        <User key={user.id} userEntity={user} />
       ))}
     </>
   );

@@ -4,6 +4,9 @@ import {
   nanoid,
   PayloadAction,
 } from "@reduxjs/toolkit";
+import { useMemo } from "react";
+import { useAppSelector } from "../hooks";
+import { delayedFetch } from "../utils";
 import { removeUser } from "./users-slice";
 
 export type TaskState = {
@@ -26,8 +29,8 @@ const initialState: TaskState = {
 export const fetchTasks = createAsyncThunk(
   "tasks/fetchTasks",
   async (): Promise<DraftTask[]> => {
-    const response = await fetch("http://localhost:3002/tasks").then((res) =>
-      res.json()
+    const response = await delayedFetch("http://localhost:3002/tasks").then(
+      (res) => res.json()
     );
     return response;
   }
@@ -60,7 +63,6 @@ export const tasksSlice = createSlice({
       state.loading = true;
     });
     builder.addCase(fetchTasks.fulfilled, (state, action) => {
-      console.log({ action });
       state.loading = false;
       state.entities = action.payload.map((drafTask) => createTask(drafTask));
     });
@@ -69,3 +71,10 @@ export const tasksSlice = createSlice({
 
 export const tasksReducer = tasksSlice.reducer;
 export const { addTask, removeTask } = tasksSlice.actions;
+
+export const useTasks = () => {
+  const tasks = useAppSelector((state) => state.tasks.entities);
+  const loading = useAppSelector((state) => state.tasks.loading);
+
+  return useMemo(() => [tasks, loading] as const, [tasks, loading]);
+};

@@ -6,9 +6,14 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import "./index.css";
 import { BrowserRouter } from "react-router-dom";
+import { fetchTasks } from "./features/tasks-slice";
+import { fetchUsers } from "./features/users-slice";
 
 const container = document.getElementById("root")!;
 const root = createRoot(container);
+
+store.dispatch(fetchTasks());
+store.dispatch(fetchUsers());
 
 root.render(
   <React.StrictMode>

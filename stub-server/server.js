@@ -24,6 +24,11 @@ server.use((req, res, next) => {
 
     return;
   }
+  if (req.method === "GET" && req.originalUrl === "/users") {
+    res.json(routerDb.get("users").value());
+
+    return;
+  }
   // Continue to JSON Server router
   next();
 });
