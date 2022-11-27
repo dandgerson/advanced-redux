@@ -1,8 +1,7 @@
-import React from "react";
-import { Link, NavLink, Route, Routes, useRoutes } from "react-router-dom";
+import { NavLink, useRoutes } from "react-router-dom";
 import "./App.scss";
-import { Counter } from "./components/Counter/Counter";
-import SuperTasker from "./components/SuperTasker/SuperTasker";
+import { Counter } from "./pages/Counter/Counter";
+import SuperTasker from "./pages/SuperTasker/SuperTasker";
 
 const routes = [
   {
