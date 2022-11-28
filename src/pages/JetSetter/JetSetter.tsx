@@ -1,19 +1,18 @@
+import { useMemo } from "react";
 import { Loading } from "../../components/Loading";
 import { useGetItemsQuery } from "../../services/api-service";
+import { Item } from "./Item";
 import "./JetSetter.scss";
-
-const itemsCount = 0;
-const unpackedItems = [];
-const packedItems = [];
 
 export const JetSetter = () => {
   const { data, isLoading } = useGetItemsQuery();
   console.log({ data });
+  const items = useMemo(() => data ?? [], [data]);
 
   return (
     <div className="jetSetter">
       <h1>Packing List</h1>
-      <div>{itemsCount} items</div>
+      <div>{items.length} items</div>
 
       <form
         onSubmit={(e) => {
@@ -41,15 +40,8 @@ export const JetSetter = () => {
         <div className="packagesContainer">
           <Loading loading={isLoading} />
           <h2>Items</h2>
-          {data && data.length ? (
-            data?.map((item) => (
-              <div key={item.id}>
-                <div>Name: {item.name}</div>
-                <div>
-                  Status: {item.packed ? "is packed" : "is not packed yet"}
-                </div>
-              </div>
-            ))
+          {items.length ? (
+            items.map((item) => <Item key={item.id} item={item} />)
           ) : (
             <div>no items</div>
           )}
